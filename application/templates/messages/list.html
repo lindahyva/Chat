@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Message</th>
+      <th>Liked</th>
+    </tr>
+    {% for message in messages %}
+    <tr>
+        <td>{{ message.name }}</td>
+        <td>{{ message.liked }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('messages_set_liked', message_id=message.id) }}">
+                <input type="submit" value="Like!"/>
+            </form>
+        </td> 
+
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
